@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매장 노트</title>
+<meta name="apple-mobile-web-app-title" content="매장 노트">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#68ADCD">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#F6F4EF;--fg:#1F2A30;--muted:#5C6870;--accent:#68ADCD;--sand:#D0C9BA}
+@media (prefers-color-scheme:dark){:root{--bg:#141A1E;--fg:#E8ECEE;--muted:#9AA6AD}}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding:16px;box-sizing:border-box;text-align:center}
+.box{max-width:360px;display:flex;flex-direction:column;gap:14px;align-items:center}
+img{width:88px;height:88px;border-radius:20px}
+h1{font-size:20px;margin:0;word-break:keep-all}
+p{margin:0;color:var(--muted);font-size:14px;line-height:1.5;word-break:keep-all}
+a.go{display:block;width:100%;padding:14px;border-radius:12px;background:var(--accent);color:#10232C;font-weight:700;text-decoration:none;font-size:16px;box-sizing:border-box}
+.tip{background:rgba(104,173,205,.12);border-radius:10px;padding:10px 12px;text-align:left}
+</style>
+</head>
+<body>
+<div class="box">
+  <img src="icon-180.png" alt="">
+  <h1>브루클린 더 버거 조인트 삼성점 매장 노트</h1>
+  <p id="msg">매장 노트를 여는 중이에요…</p>
+  <a class="go" id="go" href="https://script.google.com/macros/s/AKfycbxTebzpvaN2IhwVW_riGF4CA3PGm-BZhbpYLwnKwLg7dLB-w_fuBRI7NDYz8nxwLjbi4w/exec">매장 노트 열기</a>
+  <p class="tip" id="tip" hidden>📱 <b>홈 화면에 추가하기</b><br>아이폰: 사파리 아래 공유 버튼(□↑) → <b>홈 화면에 추가</b><br>안드로이드: 크롬 오른쪽 위 ⋮ → <b>홈 화면에 추가</b></p>
+</div>
+<script>
+(function(){
+  var url=document.getElementById("go").href;
+  var app = (window.navigator.standalone===true) || (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  if (app){ location.replace(url); return; }
+  // 브라우저로 처음 연 경우: 홈 화면 추가 방법을 보여 주고, 버튼으로 열기
+  document.getElementById("msg").textContent="홈 화면에 추가해 두면 앱처럼 바로 열 수 있어요.";
+  document.getElementById("tip").hidden=false;
+})();
+</script>
+</body>
+</html>
